@@ -35,7 +35,7 @@ export default function ProjectForm({ onSubmit, onCancel }: Props) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-1">
-        <label htmlFor="nameInput" className="text-xs text-zinc-500">Nombre *</label>
+        <label htmlFor="nameInput" className="text-xs text-zinc-500">Nombre:</label>
         <input
           id="nameInput"
           type="text"
@@ -45,7 +45,7 @@ export default function ProjectForm({ onSubmit, onCancel }: Props) {
         />
       </div>
       <div className="flex flex-col gap-1">
-        <label htmlFor="descriptionArea">Descripcion</label>
+        <label htmlFor="descriptionArea">Descripcion:</label>
         <textarea
           name="description"
           id="descriptionArea"
@@ -56,7 +56,7 @@ export default function ProjectForm({ onSubmit, onCancel }: Props) {
         />
       </div>
       <div className="flex flex-col gap-1">
-        <label htmlFor="liveUrlInput" className="text-xs text-zinc-500">Nombre *</label>
+        <label htmlFor="liveUrlInput" className="text-xs text-zinc-500">Url del sitio:</label>
         <input
           id="liveUrlInput"
           type="text"
@@ -66,7 +66,7 @@ export default function ProjectForm({ onSubmit, onCancel }: Props) {
         />
       </div>
       <div className="flex flex-col gap-1">
-        <label htmlFor="repoUrlInput" className="text-xs text-zinc-500">Nombre *</label>
+        <label htmlFor="repoUrlInput" className="text-xs text-zinc-500">Url del repositiorio:</label>
         <input
           id="repoUrlInput"
           type="text"
@@ -76,7 +76,7 @@ export default function ProjectForm({ onSubmit, onCancel }: Props) {
         />
       </div>
       <div className="flex flex-col gap-1">
-        <label className="text-xs text-zinc-500" htmlFor="imageInput">Imagen</label>
+        <label className="text-xs text-zinc-500" htmlFor="imageInput">Imagen:</label>
         <input
           type="file"
           name="imageInput"
