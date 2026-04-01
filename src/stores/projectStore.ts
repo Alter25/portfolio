@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../lib/supabase";
 import type { Project, ProjectInsert } from "../types/project";
 
 interface ProjectState{
@@ -34,7 +34,7 @@ export const useProjectsStore = create<ProjectState>((set, get) => ({
       const path = `${Date.now()}-${imageFile.name}`;
       const { error: uploadError } = await supabase.storage
         .from('project-images')
-        .upllaod(path, imageFile)
+        .upload(path, imageFile)
       if (uploadError) { set({ error: uploadError.message }); return }
       const { data: urlData } = supabase.storage
       .from('project-images')
@@ -62,7 +62,7 @@ export const useProjectsStore = create<ProjectState>((set, get) => ({
       if (uploadError) { set({ error: uploadError.message }); return }
       const { data: urlData } = supabase.storage
         .from('project-images')
-        .getPublicUrl()
+        .getPublicUrl(path)
       image_url = urlData.publicUrl;
     }
 
