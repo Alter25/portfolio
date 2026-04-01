@@ -1,9 +1,9 @@
 import './App.css'
-import ProjectCard from './components/ProjectCard'
+import Home from './pages/Home'
 function App() {
   return (
     <div>
-      <ProjectCard />
+      <Home />
     </div>
   )
 }
