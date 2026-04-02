@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import type { ProjectInsert } from "../types/project";
 
@@ -11,12 +11,12 @@ interface Props {
 export default function ProjectForm({ initial, onSubmit, onCancel }: Props) {
   const [name, setName] = useState(initial?.name ?? '')
   const [description, setDescription] = useState(initial?.description ?? '')
-  const [tags, setTags] = useState(initial?.tags?.join(', ') ?? '')
+  const [tags] = useState(initial?.tags?.join(', ') ?? '')
   const [liveUrl, setLiveUrl] = useState(initial?.live_url ?? '')
   const [repoUrl, setRepoUrl] = useState(initial?.repo_url ?? '')
   const [imageFile, setImageFile] = useState<File | undefined>()
   const [loading, setLoading] = useState(false)
-  const [existingImageUrl, setExistingImageUrl] = useState(initial?.image_url ?? null);
+  const [existingImageUrl] = useState(initial?.image_url ?? null);
 
   async function handleSubmit() {
     if (!name.trim()) return;
