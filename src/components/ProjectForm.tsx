@@ -1,20 +1,22 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import type { ProjectInsert } from "../types/project";
 
 interface Props {
+  initial?: ProjectInsert
   onSubmit: (data: ProjectInsert, imageFile?: File) => Promise<void>
-  onCancel: () => void;
+  onCancel: () => void
 }
 
-export default function ProjectForm({ onSubmit, onCancel }: Props) {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [imageFile, setImageFile] = useState<File | undefined>();
-  const [liveUrl, setLiveUrl] = useState("");
-  const [tags, setTags] = useState("");
-  const [repoUrl, setRepoUrl] = useState("");
-  const [loading, setLoading] = useState(false);
+export default function ProjectForm({ initial, onSubmit, onCancel }: Props) {
+  const [name, setName] = useState(initial?.name ?? '')
+  const [description, setDescription] = useState(initial?.description ?? '')
+  const [tags, setTags] = useState(initial?.tags?.join(', ') ?? '')
+  const [liveUrl, setLiveUrl] = useState(initial?.live_url ?? '')
+  const [repoUrl, setRepoUrl] = useState(initial?.repo_url ?? '')
+  const [imageFile, setImageFile] = useState<File | undefined>()
+  const [loading, setLoading] = useState(false)
+  const [existingImageUrl, setExistingImageUrl] = useState(initial?.image_url ?? null);
 
   async function handleSubmit() {
     if (!name.trim()) return;
@@ -26,12 +28,13 @@ export default function ProjectForm({ onSubmit, onCancel }: Props) {
       tags: tags ? tags.split(",").map(tag => tag.trim()) : null,
       live_url: liveUrl || null,
       repo_url: repoUrl || null,
-      image_url: null
+      image_url: existingImageUrl
     },
       imageFile
     )
     setLoading(false);
   }
+
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-1">
